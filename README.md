@@ -27,7 +27,7 @@ This module will automatically sign all requests and convert nested objects to d
 
 __Example:__
 ``` js
-gateway.offAmazonPayments.refund({
+payment.offAmazonPayments.refund({
   AmazonCaptureId: 'Amazon capture ID',
   RefundReferenceId: 'Refund Reference ID',
   RefundAmount: {
