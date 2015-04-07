@@ -11,9 +11,9 @@ Initialize the amazonPayment object with the environment variable, and all requi
 __Example:__
 
 ``` js
-var amazonPayment = require('amazonPayment');
-var payment = amazonPayment.connect({
-  environment: amazonPayment.Environment.Production,
+var amazonPayments = require('amazon-payments');
+var payment = amazonPayments.connect({
+  environment: amazonPayments.Environment.Production,
   sellerId: 'Amazon Seller ID',
   mwsAccessKey: 'MWS Access Key',
   mwsSecretKey: 'MWS Secret Key',
