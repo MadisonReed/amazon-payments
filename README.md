@@ -52,7 +52,7 @@ Will make a call with the following parameters:
 
 ## api.getTokenInfo(accessToken, callback)
 
-getTokenInfo taks two parameters: accesToken and callback. [More Info](http://docs.developer.amazonservices.com/en_US/apa_guide/APAGuide_ObtainProfile.html)
+getTokenInfo takes two parameters: accesToken and callback. [More Info](http://docs.developer.amazonservices.com/en_US/apa_guide/APAGuide_ObtainProfile.html)
 
 callback: err, tokenInfo
 
@@ -66,7 +66,7 @@ payment.api.getTokenInfo('access token from button', function(err, tokenInfo) {
 
 ## api.getProfile(accessToken, callback)
 
-getProfile taks two parameters: accesToken and callback. [More Info](http://docs.developer.amazonservices.com/en_US/apa_guide/APAGuide_ObtainProfile.html)
+getProfile takes two parameters: accesToken and callback. [More Info](http://docs.developer.amazonservices.com/en_US/apa_guide/APAGuide_ObtainProfile.html)
 
 callback: err, profile
 
