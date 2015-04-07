@@ -6,7 +6,9 @@ npm install amazon-payments
 
 ## Usage:
 
-Initialize the amazonPayment object with the environment variable, and all required config parameters
+Initialize the amazonPayment object with the environment variable, and all required config parameters.
+
+The `amazonPayments.Environment` object contains two properties: `Production` and `Sandbox`, pass one of these in the configuration object.
 
 __Example:__
 
