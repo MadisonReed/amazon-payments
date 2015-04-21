@@ -6,7 +6,9 @@ npm install amazon-payments
 
 ## Usage:
 
-Initialize the amazonPayment object with the environment variable, and all required config parameters
+Initialize the amazonPayment object with the environment variable, and all required config parameters.
+
+The `amazonPayments.Environment` object contains two properties: `Production` and `Sandbox`, pass one of these in the configuration object.
 
 __Example:__
 
@@ -27,7 +29,7 @@ This module will automatically sign all requests and convert nested objects to d
 
 __Example:__
 ``` js
-gateway.offAmazonPayments.refund({
+payment.offAmazonPayments.refund({
   AmazonCaptureId: 'Amazon capture ID',
   RefundReferenceId: 'Refund Reference ID',
   RefundAmount: {
@@ -50,7 +52,7 @@ Will make a call with the following parameters:
 
 ## api.getTokenInfo(accessToken, callback)
 
-getTokenInfo taks two parameters: accesToken and callback. [More Info](http://docs.developer.amazonservices.com/en_US/apa_guide/APAGuide_ObtainProfile.html)
+getTokenInfo takes two parameters: accesToken and callback. [More Info](http://docs.developer.amazonservices.com/en_US/apa_guide/APAGuide_ObtainProfile.html)
 
 callback: err, tokenInfo
 
@@ -64,7 +66,7 @@ payment.api.getTokenInfo('access token from button', function(err, tokenInfo) {
 
 ## api.getProfile(accessToken, callback)
 
-getProfile taks two parameters: accesToken and callback. [More Info](http://docs.developer.amazonservices.com/en_US/apa_guide/APAGuide_ObtainProfile.html)
+getProfile takes two parameters: accesToken and callback. [More Info](http://docs.developer.amazonservices.com/en_US/apa_guide/APAGuide_ObtainProfile.html)
 
 callback: err, profile
 
