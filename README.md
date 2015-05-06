@@ -8,7 +8,7 @@ npm install amazon-payments
 
 Initialize the amazonPayment object with the environment variable, and all required config parameters.
 
-The `amazonPayments.Environment` object contains two properties: `Production` and `Sandbox`, pass one of these in the configuration object.
+The `amazonPayments.Environment` object contains two properties: `Production` and `Sandbox`, pass one of these in the configuration object. Use `ProductionEU` and `SandboxEU` for European countries.
 
 __Example:__
 
@@ -81,6 +81,6 @@ payment.api.getProfile('access token from button', function(err, profile) {
 
 ## offAmazonPayments.*
 
-All the methods in the offAmazonPayments object take two parameters: params and callback. 
+All the methods in the offAmazonPayments object take two parameters: params and callback.
 The functions are all named the same as their respective API calls, except with a lowercase first letter.
 [More Info](http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_Overview.html)
