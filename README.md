@@ -52,7 +52,7 @@ Will make a call with the following parameters:
 
 ## api.getTokenInfo(accessToken, callback)
 
-getTokenInfo takes two parameters: accesToken and callback. [More Info](http://docs.developer.amazonservices.com/en_US/apa_guide/APAGuide_ObtainProfile.html)
+getTokenInfo takes two parameters: accesToken and callback. [More Info](https://payments.amazon.com/documentation/lpwa/201749840#201749970)
 
 callback: err, tokenInfo
 
@@ -66,7 +66,7 @@ payment.api.getTokenInfo('access token from button', function(err, tokenInfo) {
 
 ## api.getProfile(accessToken, callback)
 
-getProfile takes two parameters: accesToken and callback. [More Info](http://docs.developer.amazonservices.com/en_US/apa_guide/APAGuide_ObtainProfile.html)
+getProfile takes two parameters: accesToken and callback. [More Info](https://payments.amazon.com/documentation/lpwa/201749840#201749970)
 
 callback: err, profile
 
@@ -83,4 +83,24 @@ payment.api.getProfile('access token from button', function(err, profile) {
 
 All the methods in the offAmazonPayments object take two parameters: params and callback.
 The functions are all named the same as their respective API calls, except with a lowercase first letter.
-[More Info](http://docs.developer.amazonservices.com/en_US/off_amazon_payments/OffAmazonPayments_Overview.html)
+[More Info](https://payments.amazon.com/documentation/apireference/)
+
+__Exmaple:__
+``` js
+payment.offAmazonPayments.getAuthorizationDetails({
+  AmazonAuthorizationId: 'P01-0000000-0000000-000000'
+}, function(err, details) {
+  // details will be the authorization details
+});
+```
+
+## SNS Response handling
+
+Version 0.1.2 added SNS response handling for dealing with [SNS messages](http://docs.aws.amazon.com/sns/latest/dg/welcome.html). This also includes support for [IPN](https://payments.amazon.com/documentation/lpwa/201750560) endpoints. This will check the signature and attempt to parse any XML within IPN requests, if the message is not JSON it will return the raw message data, otherwise it will be the parsed response. 
+
+__Example:__
+``` js
+payment.parseSNSResponse(responseFromSns, function(err, parsed) {
+  // parsed will contain the full response from SNS unless the message is an IPN notification, in which case it will be the JSON-ified XML from the message.
+});
+```
