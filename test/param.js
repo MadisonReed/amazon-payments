@@ -49,5 +49,23 @@ describe('param composition', function() {
       assert.equal(sigParams.Signature, 'r/Iae1ZvKIT+v3RqxAH0Fv5bK4KxOCf1jp0tJIBx5Mk=');
       assert.equal(Object.keys(sigParams).length, 5);
     });
+
+    it('should correctly escape special characters', function() {
+      var url = 'https://mws.amazonservices.com/OffAmazonPayments_Sandbox';
+      var secret = 'thisIsMySuperSecretKey';
+      var params = {
+        test1: 'value * with non-alpha numeric special characters (like parenthesis, {braces}, [brackets], or others: ~`!@#$%^&*_+<>?:)',
+        test2: 'ßπéçîå£ ü†ƒ çhå®åç†é®ß',
+        test3: 'These are fine: -_.~'
+      };
+      var sigParams = amazon.attachSignature(url, secret, params);
+      assert.equal(sigParams.test1, params.test1);
+      assert.equal(sigParams.test2, params.test2);
+      assert.equal(sigParams.test3, params.test3);
+      assert.equal(sigParams.SignatureMethod, 'HmacSHA256');
+      assert.equal(sigParams.SignatureVersion, 2);
+      assert.equal(sigParams.Signature, '+LC2vMBuR51S94bAVK9DctDJC0XQCZ4vmQ6CKBYyTf4=');
+      assert.equal(Object.keys(sigParams).length, 6);
+    });
   });
 });
