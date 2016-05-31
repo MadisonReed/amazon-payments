@@ -13,7 +13,7 @@ The `amazonPayments.Environment` object contains two properties: `Production` an
 __Example:__
 
 ``` js
-var amazonPayments = require('amazon-payments');
+var amazonPayments = require('@madison-reed/amazon-payments');
 var payment = amazonPayments.connect({
   environment: amazonPayments.Environment.Production,
   sellerId: 'Amazon Seller ID',
