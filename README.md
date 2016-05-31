@@ -1,7 +1,7 @@
 ## Installation:
 
 ``` sh
-npm install amazon-payments
+npm install @madisonreed/amazon-payments
 ```
 
 ## Usage:
