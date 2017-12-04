@@ -85,7 +85,7 @@ All the methods in the offAmazonPayments object take two parameters: params and 
 The functions are all named the same as their respective API calls, except with a lowercase first letter.
 [More Info](https://payments.amazon.com/documentation/apireference/)
 
-__Exmaple:__
+__Example:__
 ``` js
 payment.offAmazonPayments.getAuthorizationDetails({
   AmazonAuthorizationId: 'P01-0000000-0000000-000000'
