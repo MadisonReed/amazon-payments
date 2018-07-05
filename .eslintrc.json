@@ -1,0 +1,19 @@
+{
+    "extends": "airbnb-base",
+    "plugins": [
+        "mocha"
+    ],
+    "env": {
+        "mocha": true
+    },
+    "rules": {
+        "no-param-reassign": "off",
+        "no-use-before-define": "off",
+        "no-underscore-dangle": "off",
+        "func-names": "off",
+        "no-shadow": "off",
+        "consistent-return": "off",
+        "no-restricted-syntax": "off",
+        "no-nested-ternary": "off"
+    }
+}
