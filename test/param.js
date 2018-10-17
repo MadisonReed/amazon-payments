@@ -31,6 +31,27 @@ describe('param composition', function() {
       assert.equal(newParams['test2.test4'], params.test2.test4);
       assert.equal(Object.keys(newParams).length, 4);
     });
+
+    it('can handle array parameters', () => {
+      const params = {
+        CaptureNow: true,
+        TransactionTimeout: 0,
+        ProviderCreditDetails: [
+          {
+            ProviderId: 'whocares',
+            CreditAmount: '0.20',
+            CurrencyCode: 'USD'
+          }
+        ]
+      };
+
+      const newParams = amazon.composeParams(params);
+      assert.equal(newParams.CaptureNow, params.CaptureNow);
+      assert.equal(newParams.TransactionTimeout, params.TransactionTimeout);
+      assert.equal(newParams['ProviderCreditDetails.member.1.ProviderId'], params.ProviderCreditDetails[0].ProviderId);
+      assert.equal(newParams['ProviderCreditDetails.member.1.CreditAmount'], params.ProviderCreditDetails[0].CreditAmount);
+      assert.equal(newParams['ProviderCreditDetails.member.1.CurrencyCode'], params.ProviderCreditDetails[0].CurrencyCode);
+    });
   });
 
   describe('attachSignature', function() {
