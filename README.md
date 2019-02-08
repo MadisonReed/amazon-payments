@@ -83,7 +83,7 @@ payment.api.getProfile('access token from button', function(err, profile) {
 
 All the methods in the offAmazonPayments object take two parameters: params and callback.
 The functions are all named the same as their respective API calls, except with a lowercase first letter.
-[More Info](https://payments.amazon.com/documentation/apireference/)
+[More Info](https://pay.amazon.com/us/developer/documentation/apireference/201751630)
 
 __Exmaple:__
 ``` js
