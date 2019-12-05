@@ -5,23 +5,21 @@ const fs = require("fs");
 const testData = require("./test-notify-data.json");
 const data = testData.data;
 const publicKeyId = testData.publicKeyId;
-
-const deliveryTracker = require("../lib/deliveryTracker.js");
-
-// make pay configuration
 const privateKey = fs.readFileSync("./pay-delivery-notifications.pem");
 
-const configArgs = {
-  sandbox: false,
-  publicKeyId: publicKeyId,
-  privateKey: privateKey,
-  region: 'NA'
-};
+
+var amazonPayments = require('../amazonPayments.js');
+
+var pay = amazonPayments.connect({
+  environment: amazonPayments.Environment.Sandbox.Notifications,
+  publicKeyId,
+  privateKey,
+});
 
 // run tests
-async function runTest(deliveryTracker, testCase, configArgs) {
-  const notificationPayload = deliveryTracker.buildPayload(testCase.oro, testCase.trackingNumber, testCase.carrierCode);
-  const result = await deliveryTracker.sendDeliveryNotification(notificationPayload, configArgs);
+async function runTest(deliveryNotifications, testCase, config) {
+  const notificationPayload = deliveryNotifications.buildPayload(testCase.oro, testCase.trackingNumber, testCase.carrierCode);
+  const result = await deliveryNotifications.sendDeliveryNotification(notificationPayload, config);
   if (result.statusCode !== 200) {
     console.log(`${testCase.name} failed: ${JSON.stringify(result)}`);
   } else {
@@ -31,7 +29,7 @@ async function runTest(deliveryTracker, testCase, configArgs) {
 
 data.forEach(testCase => {
   try {
-    runTest(deliveryTracker, testCase, configArgs);
+    runTest(pay.notifications, testCase, pay.config);
   } catch (error) {
     console.log(error);
   }  
