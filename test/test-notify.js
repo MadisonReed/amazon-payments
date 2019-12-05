@@ -11,7 +11,7 @@ const privateKey = fs.readFileSync("./pay-delivery-notifications.pem");
 var amazonPayments = require('../amazonPayments.js');
 
 var pay = amazonPayments.connect({
-  environment: amazonPayments.Environment.Sandbox.Notifications,
+  environment: amazonPayments.Environment.Sandbox,
   publicKeyId,
   privateKey,
 });

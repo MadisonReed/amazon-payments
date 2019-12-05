@@ -104,3 +104,39 @@ payment.parseSNSResponse(responseFromSns, function(err, parsed) {
   // parsed will contain the full response from SNS unless the message is an IPN notification, in which case it will be the JSON-ified XML from the message.
 });
 ```
+
+## Alexa Delivery Notifications
+
+Version x.y.z added a method for sending Alexa Delivery Notifications if a customer has Amazon Shopping Delivery Notifications enabled. Documentation: https://developer.amazon.com/docs/amazon-pay-automatic/delivery-order-notifications.html
+
+> *Note:* Notifications currently will be sent when a package shows a status in the carrier's system of Out for Delivery, or Delivered. Calling this method to send the notification does not need to be timed for when the package is out of delivery, that will be handled by the Alexa system. It is recommended to call this method when the package ships or the tracking number is known, whichever is later.
+
+**Prerequisites:** This method calls an API which requires registering a public key with Amazon Pay. If you do not already have a Public Key Id, follow these steps to [create and register a public key for use with Amazon Pay](https://developer.amazon.com/docs/amazon-pay-automatic/delivery-order-notifications.html#before-you-begin).
+
+To send a delivery notification, you must include a private key and public key in your configuration when initializing the AmazonPayments object. If you are just sending delivery notifications, then only the `environment`, `privateKey` and `publicKeyId` are required.
+
+__Example:__
+
+``` js
+var amazonPayments = require('@madisonreed/amazon-payments');
+var payment = amazonPayments.connect({
+  environment: amazonPayments.Environment.Production,
+  sellerId: 'Amazon Seller ID',
+  mwsAccessKey: 'MWS Access Key',
+  mwsSecretKey: 'MWS Secret Key',
+  clientId: 'Client ID',
+  privateKey: 'Private Key',
+  publicKeyId: 'Public Key Id',
+});
+```
+
+In order to send a delivery notification, the shipment must have a valid tracking number for a known carrier (plus a valid order reference number). Build the payload and then call the api. The list of valid carrier codes is included in the `carrierCodes` enumeration.
+
+__Example:__
+```js
+const orderReferenceId = "P00-0000000-0000000";
+const trackingNumber = "Z1234567890";
+const carrierCode = payment.notifications.carrierCodes.UPS; // example uses UPS
+const notificationPayload = payment.notifications.buildPayload(orderReferenceId, trackingNumber, carrierCode);
+const result = await payment.notifications.sendDeliveryNotification(notificationPayload, payment.config);
+```
