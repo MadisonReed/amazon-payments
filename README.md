@@ -137,6 +137,5 @@ __Example:__
 const orderReferenceId = "P00-0000000-0000000";
 const trackingNumber = "Z1234567890";
 const carrierCode = payment.notifications.carrierCodes.UPS; // example uses UPS
-const notificationPayload = payment.notifications.buildPayload(orderReferenceId, trackingNumber, carrierCode);
-const result = await payment.notifications.sendDeliveryNotification(notificationPayload, payment.config);
+const result = await payment.notifications.alexaDeliveryNotification(orderReferenceId, trackingNumber, carrierCode);
 ```

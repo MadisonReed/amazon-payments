@@ -10,16 +10,15 @@ const privateKey = fs.readFileSync("./pay-delivery-notifications.pem");
 
 var amazonPayments = require('../amazonPayments.js');
 
-var pay = amazonPayments.connect({
+var notifications = amazonPayments.connect({
   environment: amazonPayments.Environment.Sandbox,
   publicKeyId,
   privateKey,
-});
+}).notifications;
 
 // run tests
-async function runTest(deliveryNotifications, testCase, config) {
-  const notificationPayload = deliveryNotifications.buildPayload(testCase.oro, testCase.trackingNumber, testCase.carrierCode);
-  const result = await deliveryNotifications.sendDeliveryNotification(notificationPayload, config);
+async function runTest(notifications, testCase, config) {
+  const result = await notifications.alexaDeliveryNotification(testCase.oro, testCase.trackingNumber, testCase.carrierCode);
   if (result.statusCode !== 200) {
     console.log(`${testCase.name} failed: ${JSON.stringify(result)}`);
   } else {
@@ -29,7 +28,7 @@ async function runTest(deliveryNotifications, testCase, config) {
 
 data.forEach(testCase => {
   try {
-    runTest(pay.notifications, testCase, pay.config);
+    runTest(notifications, testCase);
   } catch (error) {
     console.log(error);
   }  
