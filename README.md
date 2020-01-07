@@ -107,7 +107,7 @@ payment.parseSNSResponse(responseFromSns, function(err, parsed) {
 
 ## Alexa Delivery Notifications
 
-Version x.y.z added a method for sending Alexa Delivery Notifications if a customer has Amazon Shopping Delivery Notifications enabled. Documentation: https://developer.amazon.com/docs/amazon-pay-automatic/delivery-order-notifications.html
+Version 0.2.8 added a method for sending Alexa Delivery Notifications if a customer has Amazon Shopping Delivery Notifications enabled. Documentation: https://developer.amazon.com/docs/amazon-pay-automatic/delivery-order-notifications.html
 
 > *Note:* Notifications currently will be sent when a package shows a status in the carrier's system of Out for Delivery, or Delivered. Calling this method to send the notification does not need to be timed for when the package is out of delivery, that will be handled by the Alexa system. It is recommended to call this method when the package ships or the tracking number is known, whichever is later.
 

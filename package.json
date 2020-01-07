@@ -5,18 +5,16 @@
     "email": "scottspork@gmail.com"
   },
   "description": "API wrapper for Amazon Payments",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "main": "amazonPayments.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/MadisonReed/amazon-payments"
   },
-  "contributors": [
-    {
-      "name": "Scott Stokes",
-      "email": "scottspork@gmail.com"
-    }
-  ],
+  "contributors": [{
+    "name": "Scott Stokes",
+    "email": "scottspork@gmail.com"
+  }],
   "keywords": [
     "amazon",
     "payments",
