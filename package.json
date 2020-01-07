@@ -11,10 +11,12 @@
     "type": "git",
     "url": "https://github.com/MadisonReed/amazon-payments"
   },
-  "contributors": [{
-    "name": "Scott Stokes",
-    "email": "scottspork@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Scott Stokes",
+      "email": "scottspork@gmail.com"
+    }
+  ],
   "keywords": [
     "amazon",
     "payments",
