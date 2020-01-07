@@ -1,0 +1,11 @@
+{
+  "publicKeyId":"<your publickeyid here>",
+  "data": [
+    {
+      "name": "Test UPS Tracking Number:",
+      "oro": "<your order reference id here>",
+      "carrierCode": "UPS",
+      "trackingNumber": "<your example UPS tracking code here>"
+    }
+  ]
+}
