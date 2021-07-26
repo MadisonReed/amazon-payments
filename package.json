@@ -5,7 +5,7 @@
     "email": "scottspork@gmail.com"
   },
   "description": "API wrapper for Amazon Payments",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "main": "amazonPayments.js",
   "repository": {
     "type": "git",
